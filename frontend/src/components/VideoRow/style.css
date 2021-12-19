@@ -1,0 +1,61 @@
+.videoRow{
+    margin-bottom: 30px;
+}
+
+.videoRow h2{
+    margin: 0px 0px 0px 30px; 
+}
+
+.videoRow--listarea {
+    overflow-x: hidden;
+    padding-left: 30px;
+}
+.videoRow--list{
+    transition: all ease 0.6s;
+}
+.videoRow--item{
+    display: inline-block;
+    width: 150px;/* 150 é o tamnaho da largura do poster do filme*/
+    cursor: pointer;
+}
+.videoRow--item img{
+    width: 100%;
+    transform: scale(0.9);
+    transition: all ease 0.2s;
+}
+
+.videoRow--item img:hover{
+    transform:  scale(1); 
+}
+
+.videoRow--left,.videoRow--right{
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    opacity:0;
+    transition: all ease 0.5s;
+}
+
+.videoRow--left{
+    left: 0;
+}
+.videoRow--right{
+    right: 0;
+}
+
+.videoRow:hover .videoRow--left,.videoRow:hover .videoRow--right{
+    opacity: 1;
+}
+
+@media (max-width: 760px){
+    .videoRow--left, .videoRow--right{
+        opacity: 1;
+    }
+}
