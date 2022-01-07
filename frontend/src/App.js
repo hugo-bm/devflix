@@ -20,7 +20,7 @@ const App = () =>{
       let myList = {
         slug: "myList",
         title: 'Minha Lista',
-        itens: await vL.getAllItems()
+        itens: vL.getAllItems()
       }
       if(myList.itens !== null){
         list.push(myList);
