@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import logo from '../../assets/avatar-devflix.png';
 
 const Header = ({rolling})=>{
 
@@ -11,7 +12,7 @@ const Header = ({rolling})=>{
                 <a href="/" className="logo--text">devflix</a>
             </div>
             <div className="header--user">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="" />
+                <img src={logo} alt="avatar logo"/>
             </div>
         </header>
     );

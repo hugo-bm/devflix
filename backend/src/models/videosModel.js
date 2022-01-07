@@ -7,19 +7,20 @@ class VideosDAO{
         this.yt = new AcessYoutube();
     }
 
-    async listAll(query='',order='relevance'){
+    async listAll(query='',order='relevance',qtd=10){
         const PART = 'snippet';
         let videoList =[];
         try {
-            const RESP = await this.yt.basicUrl(`/search?part=${PART}&type=video&order=${order}&q=${(query.length>0)?query.concat('&'):''}`);
+            const RESP = await this.yt.basicUrl(`/search?part=${PART}&type=video&maxResults=${qtd}&regionCode=BR&order=${order}&q=${(query.length>0)?query.concat('&'):''}`);
             if(RESP.data.kind === 	"youtube#searchListResponse")
             {
                 let v=null;
                 for(let video of RESP.data.items)
                 {
                     let {id,snippet} = video;
-                    const DATA = await this.videoInfo(id.videoId,'statistics');
-                    let {viewCount,likeCount} = DATA.statistics
+                    const DATA = await this.videoInfo(id.videoId,'snippet,statistics');
+                    let background = (DATA.snippet.thumbnails.maxres)?DATA.snippet.thumbnails.maxres.url:snippet.thumbnails.high.url;
+                    let {viewCount,likeCount} = DATA.statistics;
                     v = new Videos(
                         id.videoId,
                         snippet.title,
@@ -29,9 +30,10 @@ class VideosDAO{
                         likeCount,
                         snippet.channelId,
                         snippet.channelTitle,
-                        {frontCover: snippet.thumbnails.default.url,backgroundImage: snippet.thumbnails.high.url}
+                        {frontCover: snippet.thumbnails.medium.url,backgroundImage: background},
+                        DATA.snippet.tags
                     );
-                    videoList.push(v)
+                    videoList.push(v);
                 }
             }
         } catch (error) {

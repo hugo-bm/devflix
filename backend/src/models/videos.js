@@ -1,5 +1,5 @@
 class Videos {
-    constructor(id='', title = '', description = '', date, likes = 0, views = 0, idChannel ='', nameChannel = '',images={frontCover:'',backgroundImage:''}) {
+    constructor(id='', title = '', description = '', date, likes = 0, views = 0, idChannel ='', nameChannel = '',images={frontCover:'',backgroundImage:''},tags=[]) {
         let err =0;
          if (typeof(id) !== "string" && id.length == 0) {
             err++;
@@ -14,6 +14,10 @@ class Videos {
         {
            err++; 
         } 
+        if(!(tags instanceof Array) && tags.length == 0)
+        {
+            err++;
+        }
         if (err == 0) {
             this.id = id;
             this.title = title;
@@ -24,6 +28,7 @@ class Videos {
             this.idChannel = idChannel;
             this.nameChannel =nameChannel;
             this.images = images;
+            this.tags = tags;
         }
         else {
             throw new Error("Invalid parameter(s) on constructor");
@@ -110,7 +115,16 @@ class Videos {
     setImages(frontCover='',backgroundImage=''){
         if(typeof(frontCover) === 'string' && typeof(backgroundImage) === 'string')
         {
-            this.images= {frontCover,backgroundImage}
+            this.images= {frontCover,backgroundImage};
+        }
+    }
+    getTags(){
+        return this.tags;
+    }
+    setTags(tags){
+        if(tags instanceof Array && tags.length > 0)
+        {
+            this.tags = tags;
         }
     }
 

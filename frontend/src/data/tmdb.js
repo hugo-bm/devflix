@@ -1,8 +1,6 @@
-import yt from  './youtubeDataAPI'
 const API_BASE = 'https://api.themoviedb.org/3';
-const TMDB_API_KEY = 'f5c2eada210eba7af261a757e444e8f6';
+const TMDB_API_KEY = '';
 
-/* yt.getPrincipalList() */
 const  BASIC_FETCH = async (endpoint) =>{
     let req = await fetch(`${API_BASE}${endpoint}`);
     let json = await req.json();

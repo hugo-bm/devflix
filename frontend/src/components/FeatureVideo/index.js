@@ -1,45 +1,67 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './style.css';
+import videoList from '../../data/videoList';
+import BtnCallback from '../BtnCallback';
 
 const FeatureVideo = (item) => {
-    let firstDate = new Date(item.item.first_air_date);
+    let firstDate = new Date(item.item.date);
 
     let genres = [];
-    for(let i in item.item.genres){
-        genres.push(item.item.genres[i].name);
+    for (let i in item.item.tags) {
+        genres.push(item.item.tags[i]);
+    }
+    const [state,setState] = useState('add');
+    let exist = videoList.verify(item.id);
+    if(exist === true)
+    {
+        setState('remove');
+    }
+     function  click(){
+        if(state === 'add')
+        {
+            videoList.saveItem(item.item);
+            setState('remove');
+        }
+        else{
+            videoList.removeItem(item.item.id);
+            setState('add');
+        }
     }
 
-    return(
+
+    return (
         <section className="featured" style={{
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.item.backdrop_path})`
+            backgroundImage: `url(${item.item.backgroundImage})`
         }}>
             <div className="featured--vertical">
                 <div className="featured--horizontal">
                     <div className="featured--name">
-                        {item.item.original_name}
+                        {item.item.title}
                     </div>
                     <div className="featured--info">
-                        <div className="featured--points">
-                            {item.item.vote_average} pontos
+                        <div className="featured--likes">
+                            {item.item.likes} Likes
                         </div>
                         <div className="featured--year">{firstDate.getFullYear()}</div>
-                        <div className="featured--seasons">
-                            {item.item.number_of_seasons} Temporada{item.item.number_of_seasons !==1?"s":""}
+                        <div className="featured--views">
+                            {item.item.views} Vizualizaç{item.item.views !== 1 ? "ões" : "ão"}
                         </div>
                     </div>
                     <div className="featured--description">
-                        {item.item.overview}
+                        {item.item.description}
                     </div>
                     <div className="featured--buttons">
-                        <a href={`/watch?id=${item.item.id}`} className="featured--watchBtn">&#9658; Assistir</a>
-                        <a href={`/add_list?id=${item.item.id}`} className='featured--myListBtn' > + Minha Lista</a>
+                        <a href={`https://www.youtube.com/watch?v=${item.item.id}`} target="_blank" className="featured--watchBtn" rel="noreferrer">&#9658; Assistir</a>
+                        {
+                            <BtnCallback callback={()=>click()} text={state==='add'?' + Minha Lista':'Remove Minha Lista'} Class='featured--myListBtn'/>
+                        }
                     </div>
                     <div className="featured--genres">
-                        <strong>Gêneros: </strong>{genres.join(', ')}
+                        <strong>Tags: </strong>{genres.join(', ')}
                     </div>
-                </div> 
+                </div>
             </div>
         </section>
     );

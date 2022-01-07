@@ -33,14 +33,14 @@ ROUTER.get('/', (req, res) => {
 });
 
 ROUTER.get('/videos', async (req, res) => {
-    let { q, order } = req.query;
+    let { q, order,qtd } = req.query;
 
     if (q != undefined && q.length > 0) {
         let list = await cache(q);
         if (list === null){
             if (order != undefined && order.length > 0) {
                 try {
-                    list = await videos.listAll(q, order);
+                    list = await videos.listAll(q, order,qtd);
                 } catch (error) {
                     errs.displayError(error);
                 }

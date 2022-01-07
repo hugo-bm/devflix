@@ -26,13 +26,13 @@
     font-weight: bold;
     margin-top: 15px;
 }
-.featured--points,
+.featured--likes,
  .featured--year,
-  .featured--seasons{
+  .featured--views{
     display: inline-block;
     margin-right: 15px;
 }
-.featured--points{
+.featured--likes{
     color: #46d369;
 }
 
