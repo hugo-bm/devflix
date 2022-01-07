@@ -1,5 +1,5 @@
 .model{
-    width: calc(inherit -10px);
+    width: 95%;
     height: inherit;
     display: flex;
     flex-direction: row;
