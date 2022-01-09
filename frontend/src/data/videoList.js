@@ -27,16 +27,16 @@ const videoList = {
     },
     getAllItems:  ()=>{
         let list = null; 
-        list = localStorage.getItem('myList');
+        list =  localStorage.getItem('myList');
 
         if(list !== null)
         {
             list =  JSON.parse(list);
         }
-        if(list.length === 0)
+        /* if(list.length === 0)
         {
             list = null;
-        }
+        } */
         return list;
     },
     removeItem:  (id)=>{

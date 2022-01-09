@@ -72,7 +72,7 @@ let videoData = {
             {
                 slug: 'Recommended',
                 title: 'Recomendados para você!',
-                itens: await SERVER_FETCH('videos',{order:'relevance',q:'23%programacao'})
+                itens: await SERVER_FETCH('videos',{order:'relevance',q:'23%programaçãocomputadores'})
             },
             {
                 slug: 'Lang',

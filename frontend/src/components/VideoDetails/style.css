@@ -17,7 +17,7 @@
     height: auto;
 }
 .details--mainContent{
-    flex:0.8;
+    flex: 0.8;
 }
 .details--title{
     font-size: 24px;
@@ -30,7 +30,7 @@
 }
 
 .details--description{
-    margin-top:15px;
+    margin-top: 15px;
     font-size: 22px;
     color: #999;
     max-width: 75%;

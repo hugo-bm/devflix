@@ -15,7 +15,7 @@ const VideoDetails = (props) => {
                 </div>
 
                 <div className="details--btnContent">
-                    <a href={`https://www.youtube.com/watch?v=${item.id}`} target="_blank" className="details--watchBtn" rel="noreferrer">&#9658; Assistir</a>
+                    <a href={`https://www.youtube.com/watch?v=${item.id}`} target="_blank" className="details--watchBtn" rel="noopener noreferrer">&#9658; Assistir</a>
                     {/* <button className="whatList"></button> */}
                 </div>
             </div>
@@ -31,7 +31,7 @@ const VideoDetails = (props) => {
                         Vizualizaç{item.views !== 1 ? "ões" : "ão"}: {item.views}
                     </div>
                 </div>
-                <a href={`http://youtube.com/c/${item.nameChannel}`} target="_blank" className="details--channelBtn" rel="noreferrer">Canal: {item.nameChannel}</a>
+                <a href={`http://youtube.com/c/${item.nameChannel}`} target="_blank" className="details--channelBtn" rel="noopener noreferrer">Canal: {item.nameChannel}</a>
             </div>
 
         </div>

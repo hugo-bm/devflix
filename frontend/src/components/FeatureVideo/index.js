@@ -53,7 +53,7 @@ const FeatureVideo = (item) => {
                         {item.item.description}
                     </div>
                     <div className="featured--buttons">
-                        <a href={`https://www.youtube.com/watch?v=${item.item.id}`} target="_blank" className="featured--watchBtn" rel="noreferrer">&#9658; Assistir</a>
+                        <a href={`https://www.youtube.com/watch?v=${item.item.id}`} target="_blank" className="featured--watchBtn" rel="noopener noreferrer">&#9658; Assistir</a>
                         {
                             <BtnCallback callback={()=>click()} text={state==='add'?' + Minha Lista':'Remove Minha Lista'} Class='featured--myListBtn'/>
                         }
